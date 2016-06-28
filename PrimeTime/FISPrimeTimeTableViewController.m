@@ -50,62 +50,27 @@
 
 
 
-//-(NSMutableArray *)generatePrimes:(NSInteger)prime{
-//    NSMutableArray *primes  = [[NSMutableArray alloc]init];
-//    NSUInteger upperLimit = prime^2;
-//
-//    [primes addObject:[NSDecimalNumber numberWithInt:2]];
-//    for(int i=3; i < upperLimit; i++)
-//    {
-//        bool prime=true;
-//        for(int j=0;j<primes.count && (((NSDecimalNumber *)primes[j]).integerValue*((NSDecimalNumber *)primes[j]).integerValue) <= i;j++)
-//        {
-//            if(i % (((NSDecimalNumber *)primes[j]).integerValue) == 0)
-//            {
-//                prime=false;
-//                break;
-//            }
-//        }
-//        if(prime)
-//        {
-//            [primes addObject:[NSDecimalNumber numberWithInt:i]];
-//        }
-//    }
-//    NSLog(@"%@", primes);
-//    return primes;
-//}
-
-
 -(NSInteger)primeNumber:(NSInteger)prime{
-    
-    //NSInteger currentNumber = 5;
-//    if (prime == 1) {
-//return 2;
-//    } else if (prime == 2) {
-//        return 3;
-//    }
+
     
     NSMutableArray *primes  = [[NSMutableArray alloc]init];
-    NSUInteger upperLimit = 18000;
     
-    [primes addObject:[NSDecimalNumber numberWithInt:2]];
-    for(int i=2; i < upperLimit; i++)
-    {
-        bool prime=true;
-        for(int j=0;j<primes.count && (((NSDecimalNumber *)primes[j]).integerValue*((NSDecimalNumber *)primes[j]).integerValue) <= i;j++)
-        {
-            if(i % (((NSDecimalNumber *)primes[j]).integerValue) == 0)
-            {
-                prime=false;
-                break;
+                 NSUInteger number = 0;
+        while ([primes count] <= prime+1) {
+           number += 1;
+            BOOL isPrime = YES;
+            for (NSUInteger j = 2; j < number; j++) {
+                if (number%j == 0) {
+                    isPrime = NO;
+                }
+            }
+            if (isPrime) {
+                [primes addObject:@(number)];
+    
             }
         }
-        if(prime)
-        {
-            [primes addObject:[NSDecimalNumber numberWithInt:i]];
-        }
-    }
-    NSInteger result = [primes[prime]integerValue]+5000;
+    
+    NSInteger result = [primes[prime]integerValue];
     return result;
 }
 
